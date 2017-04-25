@@ -1,5 +1,4 @@
 FROM ruimashita/numpy
-MAINTAINER alongalky <alon@eureka.guru>
 
 RUN apt-get update \
  && apt-get install openssh-server -y \
@@ -8,6 +7,10 @@ RUN apt-get update \
  && mkdir -p /var/run/sshd \
  && chmod 700 /root/.ssh/ \
  && echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
+
+RUN rm /etc/update-motd.d/*
+COPY ./banner.txt /etc/
+RUN mv /etc/banner.txt /etc/motd
 
 ENV PUBLIC_KEY bla
 EXPOSE 22
