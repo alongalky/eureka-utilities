@@ -12,6 +12,9 @@ RUN rm /etc/update-motd.d/*
 COPY ./banner.txt /etc/
 RUN mv /etc/banner.txt /etc/motd
 
+RUN mkdir -p /examples
+COPY pi.py /examples
+
 ENV PUBLIC_KEY bla
 EXPOSE 22
 CMD echo $PUBLIC_KEY > /root/.ssh/authorized_keys; /usr/sbin/sshd -D
