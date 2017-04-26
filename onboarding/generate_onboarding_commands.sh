@@ -19,11 +19,12 @@ sudo gcsfuse eureka-account-$account /mnt/eureka-account-$account
 
 Still in machinas, run the user docker container:
 git clone https://bitbucket.org/alongalky/utility-scripts
-docker run -itd -p2000-3000:22 -v /mnt/eureka-account-$account/:/keep  -e"PUBLIC_KEY=$publickey" numpy-ssh
+docker build . -t numpy-ssh
+docker run -i -t -d -p 2000-3000:22 -v /mnt/eureka-account-$account/:/keep -e "PUBLIC_KEY=$publickey" numpy-ssh
 
 Parse the container and port
-container=\$(docker -H localhost:2375 ps | sed -n "2p" | awk '{print \$1}')
-port=\$(docker -H localhost:2375 port \$container | sed -rn 's/.+:(.+)\$/\1/p')
+container=\$(docker ps | sed -n "2p" | awk '{print \$1}')
+port=\$(docker port \$container | sed -rn 's/.+:(.+)\$/\1/p')
 
 Insert the new machine. Requires changing container and port
 INSERT INTO \`machines\` (\`machine_id\`, \`name\`, \`account_id\`, \`vm_id\`, \`container_id\`, \`ssh_port\`) VALUES ('$machine', 'machina’, '$account', 'machinas-beta', '<container-id>', '<port>');
