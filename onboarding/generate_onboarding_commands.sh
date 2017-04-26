@@ -20,7 +20,7 @@ sudo gcsfuse eureka-account-$account /mnt/eureka-account-$account
 Still in machinas, run the user docker container:
 git clone https://bitbucket.org/alongalky/utility-scripts
 docker build . -t numpy-ssh
-docker run -i -t -d -p 2000-3000:22 -v /mnt/eureka-account-$account/:/keep -e "PUBLIC_KEY=$publickey" numpy-ssh
+docker run -i -t -d --restart=always -p 2000-3000:22 -v /mnt/eureka-account-$account/:/keep -e "PUBLIC_KEY=$publickey" numpy-ssh
 
 Parse the container and port
 container=\$(docker ps | sed -n "2p" | awk '{print \$1}')
