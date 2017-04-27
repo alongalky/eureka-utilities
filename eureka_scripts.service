@@ -1,0 +1,11 @@
+[Unit]
+Description=Fetch Eureka Scripts from internal API
+Before=docker.socket
+
+[Service]
+Type=forking
+ExecStart=/etc/eureka_scripts.sh
+
+[Install]
+WantedBy=multi-user.target
+RequiredBy=docker.socket
