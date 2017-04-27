@@ -22,7 +22,7 @@ Still in machinas, run the user docker container:
 git clone git@bitbucket.org:alongalky/utility-scripts.git
 cd utility-scripts/dockerfiles/numpy
 docker build . -t numpy-ssh
-docker run -i -t -d --restart=always -p 2000-3000:22 -v /mnt/eureka-account-$account/:/keep -e "PUBLIC_KEY=$publickey" numpy-ssh
+docker run -i -t -d -p 2000-3000:22 -v /mnt/eureka-account-$account/:/keep -e "PUBLIC_KEY=$publickey" numpy-ssh
 
 Parse the container and port
 container=\$(docker ps | sed -n "2p" | awk '{print \$1}')
