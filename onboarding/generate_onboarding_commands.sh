@@ -8,8 +8,9 @@ ssh-keygen -f $account -N "" -q
 publickey=$(cat $account.pub | awk '{print $1,$2}')
 
 cat <<EOI
-Make gCloud bucket
+Make gCloud bucket, upload private key to private-key bucket
 gsutil mb -c regional -p $PROJECT_NAME -l us-east1 gs://eureka-account-$account/
+gsutil cp $account gs://${PROJECT_NAME}-privatekeys
 
 Insert into accounts (requires adding user details)
 INSERT INTO \`accounts\` (\`account_id\`, \`name\`, \`key\`, \`secret\`, \`first_name\`, \`last_name\`, \`email\`, \`spending_quota\`, \`vm_quota\`, \`public_key\`) VALUES ('$account',<customer-company/name>,'$key','$secret',<firstname>,<lastname>,<email>,'100.0',10,'$publickey');
