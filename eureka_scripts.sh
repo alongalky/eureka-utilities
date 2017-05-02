@@ -6,4 +6,5 @@ response=$(curl -s $eureka_endpoint/api/_internal/scripts?vm_id=$vm_id)
 
 script=$(jq '.script' <<<$response | sed -r 's/^"(.*)"$/\1/')
 
-eval $script &
+echo -e $script >/tmp/eureka_script.sh
+bash /tmp/eureka_script.sh &
