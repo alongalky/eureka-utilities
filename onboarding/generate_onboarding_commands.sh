@@ -15,6 +15,9 @@ gsutil cp $account gs://${PROJECT_NAME}-privatekeys
 Insert into accounts (requires adding user details)
 INSERT INTO \`accounts\` (\`account_id\`, \`name\`, \`key\`, \`secret\`, \`first_name\`, \`last_name\`, \`email\`, \`spending_quota\`, \`vm_quota\`, \`public_key\`) VALUES ('$account',<customer-company/name>,'$key','$secret',<firstname>,<lastname>,<email>,'100.0',10,'$publickey');
 
+Find out the IP of the machinas machine:
+gcloud compute instances list --project $PROJECT_NAME
+
 SSH into the machinas machine, and mount cloud storage:
 sudo mkdir /mnt/eureka-account-$account
 sudo gcsfuse eureka-account-$account /mnt/eureka-account-$account
