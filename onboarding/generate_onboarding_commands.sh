@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ -z $PROJECT_NAME ]; then
+  echo You need to set PROJECT_NAME!!
+  exit 0
+fi
+
 account=$(python -c "import uuid; print str(uuid.uuid4())")
 key=$(python -c "import uuid; print str(uuid.uuid4())")
 secret=$(python -c "import uuid; print str(uuid.uuid4())")
