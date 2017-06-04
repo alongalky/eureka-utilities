@@ -6,13 +6,12 @@ RUN apt-get update \
  && mkdir -p /root/.ssh \
  && mkdir -p /var/run/sshd \
  && chmod 700 /root/.ssh/ \
- && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
- && echo "PermitEmptyPasswords yes" >> /etc/ssh/sshd_config
- && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
- && echo "UsePAM no" >> /etc/ssh/sshd_config
+ && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config \
+ && echo "PermitEmptyPasswords yes" >> /etc/ssh/sshd_config \
+ && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \
+ && echo "UsePAM no" >> /etc/ssh/sshd_config \
 
-RUN apt-get install -y vim screen git byobu emacs bash-completion build-essential curl wget make
-cmake autoconf libtool python-pip
+RUN apt-get install -y vim screen git byobu emacs bash-completion build-essential curl wget make cmake autoconf libtool python-pip
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
