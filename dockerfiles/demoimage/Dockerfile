@@ -18,7 +18,7 @@ RUN mv /etc/banner.txt /etc/motd
 RUN mkdir -p /examples
 COPY pi.py /examples
 
-RUN passwd -d root
+RUN echo -e 'eureka\neureka' | passwd root
 COPY sshd_config /etc/ssh/sshd_config
 
 EXPOSE 22
