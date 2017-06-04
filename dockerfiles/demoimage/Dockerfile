@@ -24,5 +24,7 @@ RUN mv /etc/banner.txt /etc/motd
 RUN mkdir -p /examples
 COPY pi.py /examples
 
+RUN passwd -d root
+
 EXPOSE 22
 CMD /usr/sbin/sshd -D
