@@ -21,8 +21,7 @@ COPY pi.py /examples
 RUN bash -l -c 'echo -e "eureka\neureka" | passwd root'
 COPY sshd_config /etc/ssh/sshd_config
 
-RUN mkdir -p ~/.eureka/
-COPY $USERCONFIGFILE ~/.eureka/eureka.config.yaml
+RUN mkdir -p /root/.eureka/
 RUN npm install -g eureka-cli
 
 RUN echo machina >/etc/hostname
