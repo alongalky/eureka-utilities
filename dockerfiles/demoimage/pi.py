@@ -12,6 +12,6 @@ p = random.rand(n,2)
 idx = p[:,0]**2+p[:,1]**2 < 1
 
 # estimation of pi
-print 'Pi calculator ran for %d iterations' % n
+print 'Pi calculator will run for %d iterations' % n
 print 'Estimated Pi: %0.16f' % (sum(idx).astype('double')/n*4)
 print 'Real pi:      %0.16f' % pi
