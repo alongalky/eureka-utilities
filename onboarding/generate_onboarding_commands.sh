@@ -40,6 +40,9 @@ container=\$(sudo docker ps | sed -n "2p" | awk '{print \$1}')
 port=\$(sudo docker port \$container | sed -rn 's/.+:(.+)\$/\1/p')
 echo \$container \$port
 
+Copy into the container the Eureka configuration file to make the CLI usable from within the container
+sudo docker cp $account/eureka.config.yaml \$container:/root/.eureka/eureka.config.yaml
+
 Insert the new machine. Requires changing container and port
 INSERT INTO \`machines\` (\`machine_id\`, \`name\`, \`account_id\`, \`vm_id\`, \`container_id\`, \`ssh_port\`) VALUES ('$machine', 'machina', '$account', 'machinas-$PROJECT_NAME', '<container-id>', '<port>');
 
