@@ -12,9 +12,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
 RUN apt-get install -y vim screen git byobu emacs bash-completion gfortran build-essential curl wget make cmake autoconf libtool python-pip
-RUN apt-get install -y rsync subversion rpm libstdc++6 octave xterm
-
-RUN apt-get install unzip -y
+RUN apt-get install -y aptitude unzip xterm rsync subversion rpm libstdc++6 octave r-base
 
 # MatCont
 RUN cd /root \
