@@ -25,7 +25,7 @@ RUN cd /tmp \
   && wget https://www.neuron.yale.edu/ftp/neuron/versions/v7.4/nrn-7.4.x86_64.deb \
   && dpkg -i nrn-7.4.x86_64.deb \
   && echo 'export PYTHONHOME="/usr"' >>/etc/profile \
-  && echo 'export LD_LIBRARY_PATH="/usr/lib:"' >>/etc/profile
+  && echo 'export LD_LIBRARY_PATH="/usr/lib:"' >>/etc/profile \
   && rm nrn-7.4.x86_64.deb
 
 # Quantum Espresso
