@@ -31,7 +31,7 @@ RUN cd /tmp \
 RUN apt-get install -y quantum-espresso quantum-espresso-data
 
 # MPI goodies
-RUN apt-get install libopenmpi-dev libsimgrid-dev
+RUN apt-get install -y libopenmpi-dev libsimgrid-dev
 
 RUN apt-get clean
 
