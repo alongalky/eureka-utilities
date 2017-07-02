@@ -15,7 +15,7 @@ RUN apt-get install -y vim screen git byobu emacs bash-completion gfortran build
 RUN apt-get install -y aptitude unzip xterm rsync subversion rpm libstdc++6 octave r-base
 
 # MatCont
-RUN cd /root \
+RUN cd /opt \
   && wget 'https://downloads.sourceforge.net/project/matcont/matcontm/matcontm5p1/MatContM_2017.04.10.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmatcont%2F&ts=1498835921&use_mirror=netix' -O MatContM_2017.04.10.zip \
   && unzip MatContM_2017.04.10.zip \
   && rm MatContM_2017.04.10.zip
