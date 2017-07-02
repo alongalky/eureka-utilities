@@ -26,12 +26,13 @@ RUN cd /tmp \
   && dpkg -i nrn-7.4.x86_64.deb \
   && echo 'export PYTHONHOME="/usr"' >>/etc/profile \
   && echo 'export LD_LIBRARY_PATH="/usr/lib:"' >>/etc/profile
+  && rm nrn-7.4.x86_64.deb
 
 # Quantum Espresso
 RUN apt-get install -y quantum-espresso quantum-espresso-data
 
 # MPI goodies
-RUN apt-get install -y libopenmpi-dev libsimgrid-dev
+RUN apt-get install -y libopenmpi-dev libsimgrid-dev libboost-all-dev
 
 RUN apt-get clean
 
