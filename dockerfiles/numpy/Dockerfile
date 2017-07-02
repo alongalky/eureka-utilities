@@ -12,7 +12,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
 RUN apt-get install -y vim screen git byobu emacs bash-completion gfortran build-essential curl wget make cmake autoconf libtool python-pip
-RUN apt-get install -y aptitude unzip xterm rsync subversion rpm libstdc++6 octave r-base
+RUN apt-get install -y aptitude unzip xterm rsync subversion rpm libstdc++6 octave r-base linux-headers-amd64
 
 # MatCont
 RUN cd /root \
@@ -26,6 +26,12 @@ RUN cd /tmp \
   && dpkg -i nrn-7.4.x86_64.deb \
   && echo 'export PYTHONHOME="/usr"' >>/etc/profile \
   && echo 'export LD_LIBRARY_PATH="/usr/lib:"' >>/etc/profile
+
+# Quantum Espresso
+RUN apt-get install -y quantum-espresso quantum-espresso-data
+
+# MPI goodies
+RUN apt-get install libopenmpi-dev libsimgrid-dev
 
 RUN apt-get clean
 
