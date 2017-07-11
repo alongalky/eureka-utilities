@@ -1,4 +1,4 @@
-FROM ruimashita/numpy
+FROM ubuntu:xenial
 
 RUN apt-get update \
  && apt-get upgrade -y
@@ -28,11 +28,17 @@ RUN cd /tmp \
   && echo 'export LD_LIBRARY_PATH="/usr/lib:"' >>/etc/profile \
   && rm nrn-7.4.x86_64.deb
 
+# Python Numpy
+RUN apt-get install -y python-numpy
+
 # Quantum Espresso
 RUN apt-get install -y quantum-espresso quantum-espresso-data
 
 # MPI goodies
 RUN apt-get install -y libopenmpi-dev libsimgrid-dev libboost-all-dev
+
+# Abinit
+RUN apt-get install -y abinit
 
 RUN apt-get clean
 
