@@ -38,7 +38,7 @@ RUN apt-get install -y quantum-espresso quantum-espresso-data
 RUN apt-get install -y libopenmpi-dev libsimgrid-dev libboost-all-dev
 
 # Abinit
-RUN apt-get install -y abinit
+RUN apt-get install -y abinit abinit-doc
 
 RUN apt-get clean
 
