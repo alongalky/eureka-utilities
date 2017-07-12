@@ -3,7 +3,7 @@ FROM ubuntu:xenial
 RUN apt-get update \
  && apt-get upgrade -y
 
-RUN apt-get install openssh-server -y \
+RUN apt-get install curl openssh-server -y \
  && mkdir -p /root/.ssh \
  && chmod 700 /root/.ssh/ \
  && mkdir -p /var/run/sshd
