@@ -40,6 +40,9 @@ RUN apt-get install -y libopenmpi-dev libsimgrid-dev libboost-all-dev
 # Abinit
 RUN apt-get install -y abinit abinit-doc
 
+# LAMMPS
+RUN apt-get install -y lammps lammps-doc
+
 RUN apt-get clean
 
 RUN rm /etc/update-motd.d/*
