@@ -1,4 +1,8 @@
-FROM ruimashita/numpy
+FROM ubuntu:xenial
+
+RUN apt-get update \
+ && apt-get upgrade -y
+
 RUN apt-get install -y aptitude p7zip unzip xterm rsync subversion rpm libstdc++6 octave r-base linux-headers-virtual
 
 # MatCont
