@@ -3,7 +3,6 @@ FROM ubuntu:xenial
 RUN apt-get update \
  && apt-get upgrade -y
 
-RUN apt-get install -y aptitude p7zip unzip xterm rsync subversion rpm libstdc++6 octave r-base linux-headers-virtual
 
 RUN apt-get update \
  && apt-get install openssh-server -y \
@@ -13,7 +12,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
 RUN apt-get install -y vim screen git byobu emacs bash-completion build-essential gfortran curl wget make cmake autoconf libtool python-pip
-RUN apt-get install -y aptitude unzip xterm rsync subversion rpm libstdc++6 octave r-base linux-headers-virtual
+RUN apt-get install -y aptitude p7zip unzip xterm rsync subversion rpm libstdc++6 octave r-base linux-headers-virtual
 
 # MatCont
 RUN cd /opt \
