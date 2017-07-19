@@ -46,6 +46,9 @@ RUN apt-get install -y lammps lammps-doc
 # NWChem
 RUN apt-get install -y nwchem nwchem-data
 
+# TensorFlow CPU only
+RUN pip install tensorflow
+
 RUN apt-get clean
 
 RUN rm /etc/update-motd.d/*
