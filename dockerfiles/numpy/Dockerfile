@@ -36,7 +36,8 @@ RUN apt-get install -y quantum-espresso quantum-espresso-data
 
 # MPI goodies
 RUN apt-get install -y libopenmpi-dev libsimgrid-dev libboost-all-dev
-RUN echo -e "alias mpirun='mpirun --allow-run-as-root'\nalias mpiexec='mpiexec --allow-run-as-root'" >>/etc/profile
+RUN echo "alias mpirun='mpirun --allow-run-as-root'" >>/etc/profile
+RUN echo "alias mpiexec='mpiexec --allow-run-as-root'" >>/etc/profile
 
 # Abinit
 RUN apt-get install -y abinit abinit-doc
