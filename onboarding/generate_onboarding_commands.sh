@@ -49,7 +49,7 @@ sudo docker cp $account/eureka.config.yaml \$container:/root/.eureka/eureka.conf
 Run the following SQL (updating the necessary fields):
 INSERT INTO \`accounts\` (\`account_id\`, \`name\`, \`key\`, \`secret\`, \`first_name\`, \`last_name\`, \`email\`, \`spending_quota\`, \`vm_quota\`, \`public_key\`) VALUES ('$account',<customer-company/name>,'$key','$secret',<firstname>,<lastname>,<email>,'100.0',10,'$publickey');
 
-INSERT INTO \`machines\` (\`machine_id\`, \`name\`, \`account_id\`, \`vm_id\`, \`container_id\`, \`ssh_port\`) VALUES ('$machine', 'machina', '$account', 'machinas-$PROJECT_NAME', '<container-id>', '<port>');
+INSERT INTO \`machines\` (\`machine_id\`, \`name\`, \`account_id\`, \`vm_id\`, \`container_id\`, \`ssh_port\`) VALUES ('$machine', 'machina', '$account', 'machinas-$PROJECT_NAME', <container-id>, <port>);
 
 EOI
 
