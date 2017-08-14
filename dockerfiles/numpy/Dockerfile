@@ -69,4 +69,5 @@ RUN mkdir -p /root/.eureka/
 RUN npm install -g eureka-cli
 
 EXPOSE 22
-CMD echo $PUBLIC_KEY > /root/.ssh/authorized_keys; /usr/sbin/sshd -D
+COPY container_entry.sh /etc/
+CMD /etc/container_entry.sh "$PUBLIC_KEY"
