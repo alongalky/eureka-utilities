@@ -29,7 +29,7 @@ gsutil cp $account/eureka.config.yaml gs://${PROJECT_NAME}-configfiles/$account/
 
 Mount cloud storage:
 sudo mkdir /mnt/eureka-account-$account
-sudo gcsfuse eureka-account-$account /mnt/eureka-account-$account
+sudo gcsfuse --file-mode 0755 --limit-ops-per-sec -1 --stat-cache-ttl 1s --type-cache-ttl 1s eureka-account-$account /mnt/eureka-account-$account
 
 Still in machinas, run the user docker container (change the port):
 cd ~/utility-scripts/dockerfiles/numpy
