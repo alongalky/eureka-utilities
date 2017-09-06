@@ -11,7 +11,7 @@ RUN apt-get update \
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
-RUN apt-get install -y vim screen git byobu emacs bash-completion build-essential gfortran curl wget make cmake autoconf libtool python-pip gdb
+RUN apt-get install -y vim screen git byobu emacs bash-completion build-essential gfortran curl wget make cmake autoconf libtool python-pip gdb software-properties-common
 RUN apt-get install -y aptitude p7zip unzip xterm rsync subversion rpm libstdc++6 octave liboctave-dev r-base linux-headers-virtual sudo nano fftw-dev libgsl-dev tree
 
 # MatCont
@@ -51,6 +51,13 @@ RUN apt-get install -y nwchem nwchem-data
 
 # TensorFlow CPU only
 RUN pip install tensorflow
+
+# OpenFOAM
+RUN add-apt-repository http://dl.openfoam.org/ubuntu \
+  && wget -O - http://dl.openfoam.org/gpg.key | apt-key add - \
+  && apt-get update \
+  && apt-get install -y openfoam5
+RUN echo '. /opt/openfoam5/etc/bashrc' >>/etc/profile
 
 RUN apt-get clean
 
