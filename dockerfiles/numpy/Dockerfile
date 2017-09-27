@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM FROM nvidia/cuda:8.0-runtime-ubuntu16.04
 
 RUN apt-get update \
  && apt-get upgrade -y
@@ -13,12 +13,6 @@ RUN apt-get install -y nodejs
 
 RUN apt-get install -y vim screen git byobu emacs bash-completion gfortran build-essential curl wget make cmake autoconf libtool python-pip gdb software-properties-common
 RUN apt-get install -y aptitude p7zip unzip xterm rsync subversion rpm libstdc++6 octave liboctave-dev r-base linux-headers-virtual sudo nano fftw-dev libgsl-dev tree
-
-# MatCont
-RUN cd /opt \
-  && wget 'https://downloads.sourceforge.net/project/matcont/matcontm/matcontm5p1/MatContM_2017.04.10.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmatcont%2F&ts=1498835921&use_mirror=netix' -O MatContM_2017.04.10.zip \
-  && unzip MatContM_2017.04.10.zip \
-  && rm MatContM_2017.04.10.zip
 
 # Neuron
 RUN cd /tmp \
@@ -78,3 +72,5 @@ RUN npm install -g eureka-cli
 EXPOSE 22
 COPY container_entry.sh /etc/
 CMD /etc/container_entry.sh "$PUBLIC_KEY"
+
+RUN echo 'PS1="\\[\\e[1;34m\\][\\w]\\$\\[\\e[m\\] "' >> ~/.bashrc
