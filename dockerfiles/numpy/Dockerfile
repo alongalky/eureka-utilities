@@ -8,17 +8,29 @@ RUN apt-get install curl openssh-server -y \
  && chmod 700 /root/.ssh/ \
  && mkdir -p /var/run/sshd
 
+# Node.js, required for Eureka CLI
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
-RUN apt-get install -y vim screen git byobu emacs bash-completion gfortran build-essential curl wget make cmake autoconf libtool python-pip gdb software-properties-common
-RUN apt-get install -y aptitude p7zip unzip xterm rsync subversion rpm libstdc++6 octave liboctave-dev r-base linux-headers-virtual sudo nano fftw-dev libgsl-dev tree
+RUN apt-get install -y vim screen git byobu emacs bash-completion gfortran build-essential curl wget make cmake autoconf libtool python-pip gdb software-properties-common \
+    aptitude p7zip unzip xterm rsync subversion rpm libstdc++6 octave liboctave-dev r-base linux-headers-virtual sudo nano fftw-dev libgsl-dev tree
 
+# Python Numpy
+RUN apt-get install -y python-numpy
+
+# MPI goodies
+RUN apt-get install -y libopenmpi-dev libsimgrid-dev libboost-all-dev
+RUN echo "shopt -s expand_aliases" >>/etc/profile
+RUN echo "alias mpirun='mpirun --allow-run-as-root '" >>/etc/profile
+RUN echo "alias mpiexec='mpiexec --allow-run-as-root '" >>/etc/profile
+
+# CUDNN 6, required for tensorflow on GPU
 RUN wget https://storage.googleapis.com/eureka-cudnn/libcudnn6_6.0.21-1%2Bcuda8.0_amd64.deb -P /tmp/
 RUN dpkg -i /tmp/libcudnn6*
 RUN rm /tmp/libcudnn6*
 
-RUN apt-get install python-pip python-dev python-virtualenv
+# Installing Tensorflow in 2 Python virtual environments, CPU and GPU
+RUN apt-get install -y python-pip python-dev python-virtualenv
 RUN virtualenv --system-site-packages /root/tensorflow-gpu
 RUN virtualenv --system-site-packages /root/tensorflow-cpu
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
@@ -32,11 +44,10 @@ COPY ./banner.txt /etc/motd
 
 RUN echo 'PS1="\\[\\e[1;34m\\][\\w]\\$\\[\\e[m\\] "' >> ~/.bashrc
 
+# Eureka examples
 RUN mkdir -p /examples
 COPY pi.py /examples
-COPY pi.py /root
 COPY hash.py /examples
-COPY hash.py /root
 
 COPY sshd_config /etc/ssh/sshd_config
 
